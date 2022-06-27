@@ -11,6 +11,11 @@ class Team
         $this->members = $members;
     }
 
+    public static function start($name, $members = [])
+    {
+        return new static($name, $members);
+    }
+
     public function name()
     {
         return $this->name;
@@ -32,7 +37,7 @@ class Team
     }
 }
 
-$acme = new Team('Acme', [
+$acme = Team::start('Acme', [
     'John Doe',
     'Jane Doe'
 ]);
