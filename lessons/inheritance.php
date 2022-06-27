@@ -1,5 +1,5 @@
 <?php
-
+/*
 class CoffeeMaker
 {
     public function brew()
@@ -18,3 +18,34 @@ class SpecialtyCoffeeMaker extends CoffeeMaker
 
 (new SpecialtyCoffeeMaker())->brew();
 (new SpecialtyCoffeeMaker())->brewLatte();
+*/
+
+class Collection
+{
+    protected array $items;
+
+    public function __construct(array $items)
+    {
+        $this->items = $items;
+    }
+}
+
+class Video
+{
+    public $title;
+    public $length;
+
+    public function __construct($title, $length)
+    {
+        $this->title = $title;
+        $this->length = $length;
+    }
+}
+
+$collection = new Collection([
+    new Video('Some video 1', 100),
+    new Video('Some video 2', 200),
+    new Video('Some video 3', 300),
+]);
+
+var_dump($collection);
