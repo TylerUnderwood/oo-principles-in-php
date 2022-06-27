@@ -37,6 +37,14 @@ class Collection
     }
 }
 
+class VideosCollection extends Collection
+{
+    public function length()
+    {
+        return $this->sum('length');
+    }
+}
+
 class Video
 {
     public $title;
@@ -49,12 +57,12 @@ class Video
     }
 }
 
-$collection = new Collection([
+$videos = new VideosCollection([
     new Video('Some video 1', 100),
     new Video('Some video 2', 200),
     new Video('Some video 3', 300),
 ]);
 
-var_dump($collection);
+// var_dump($videos);
 
-echo $collection->sum('length');
+echo $videos->length();
