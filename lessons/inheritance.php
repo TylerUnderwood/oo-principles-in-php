@@ -1,5 +1,5 @@
 <?php
-/*
+/* PART 1
 class CoffeeMaker
 {
     public function brew()
@@ -20,6 +20,7 @@ class SpecialtyCoffeeMaker extends CoffeeMaker
 (new SpecialtyCoffeeMaker())->brewLatte();
 */
 
+/* PART 2
 class Collection
 {
     protected array $items;
@@ -64,3 +65,30 @@ $videos = new VideosCollection([
 // var_dump($videos);
 
 echo $videos->length();
+*/
+
+class AchievementType
+{
+    public function name()
+    {
+        // Achievement Type
+    }
+
+    public function difficulty()
+    {
+        return 'intermediate';
+    }
+
+    public function icon()
+    {
+        return '/images/icon.png';
+    }
+}
+
+class FirstThousandPoints extends AchievementType
+{
+    public function qualifier($user)
+    {
+
+    }
+}
