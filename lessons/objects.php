@@ -30,18 +30,23 @@ class Team
     {
         $this->members[] = $name;
     }
+}
 
-    public function remove()
+class Member
+{
+    protected $name;
+
+    public function __construct($name)
     {
-
+        $this->name = $name;
     }
 }
 
 $acme = Team::start('Acme', [
-    'John Doe',
-    'Jane Doe'
+    new Member('John Doe'),
+    new Member('Jane Doe'),
 ]);
 
-$acme->add('Frank Doe');
+$foo = Team::start('Foo');
 
 var_dump($acme->members());
