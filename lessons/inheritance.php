@@ -28,6 +28,13 @@ class Collection
     {
         $this->items = $items;
     }
+
+    public function sum($key)
+    {
+        return array_sum(array_map(function ($item) use ($key) {
+            return $item->$key;
+        }, $this->items));
+    }
 }
 
 class Video
@@ -49,3 +56,5 @@ $collection = new Collection([
 ]);
 
 var_dump($collection);
+
+echo $collection->sum('length');
