@@ -11,9 +11,9 @@ class Team
         $this->members = $members;
     }
 
-    public static function start($name, $members = [])
+    public static function start(...$params)
     {
-        return new static($name, $members);
+        return new static(...$params);
     }
 
     public function name()
