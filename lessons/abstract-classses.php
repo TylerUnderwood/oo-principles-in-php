@@ -1,6 +1,6 @@
 <?php
 
-class AchievementType
+abstract class AchievementType
 {
     public function name()
     {
@@ -19,6 +19,8 @@ class AchievementType
     {
         return strtolower(str_replace(' ', '-', $this->name()) . '.png');
     }
+
+    abstract function qualifier($user);
 }
 
 class FirstThousandPoints extends AchievementType
@@ -37,7 +39,15 @@ class FirstBestAnswer extends AchievementType
     }
 }
 
-$achievement = new FirstThousandPoints();
+class ReachTop50 extends AchievementType
+{
+    public function qualifier($user)
+    {
+
+    }
+}
+
+$achievement = new ReachTop50();
 
 echo $achievement->name();
 echo "\n----------------\n";
