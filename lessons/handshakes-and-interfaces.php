@@ -1,6 +1,11 @@
 <?php
 
-class CampaignMonitor
+interface NewsLetter
+{
+    public function subscribe($email);
+}
+
+class CampaignMonitor implements NewsLetter
 {
     public function subscribe($email)
     {
@@ -8,7 +13,7 @@ class CampaignMonitor
     }
 }
 
-class Drip
+class Drip implements NewsLetter
 {
     public function subscribe($email)
     {
@@ -18,7 +23,7 @@ class Drip
 
 class NewsletterSubscriptionController
 {
-    public function store($newsletter)
+    public function store(NewsLetter $newsletter)
     {
         $email = "joe@email.com";
 
@@ -28,4 +33,4 @@ class NewsletterSubscriptionController
 
 $controller = new NewsletterSubscriptionController();
 
-$controller->store(new Drip);
+$controller->store(new CampaignMonitor);
