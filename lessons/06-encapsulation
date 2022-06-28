@@ -1,0 +1,27 @@
+<?php
+
+// Encapsulation => To enclose within a capsule
+
+class Person
+{
+    public $name;
+
+    public function __construct($name)
+    {
+        $this->name = $name;
+    }
+
+    public function job()
+    {
+        return "Software Developer";
+    }
+
+    public function thingsThatKeepYouUpAtNight()
+    {
+        return "We are all going to die someday and that is terrifying.";
+    }
+}
+
+$bob = new Person('Bob');
+
+var_dump($bob->thingsThatKeepYouUpAtNight());
