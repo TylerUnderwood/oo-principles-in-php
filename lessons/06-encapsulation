@@ -2,6 +2,7 @@
 
 // Encapsulation => To enclose within a capsule
 
+/*
 class Person
 {
     public $name;
@@ -17,9 +18,38 @@ class Person
     }
 }
 
-$method = new \ReflectionMethod(Person::class, 'thingsThatKeepYouUpAtNight');
-$method->setAccessible(true);
-
 $bob = new Person('Bob');
+$bob->name = null; // lol wut
+*/
 
-var_dump($method->invoke($bob));
+class TennisMatch
+{
+    protected $playerOne;
+
+    public function score()
+    {
+        // does it have winners
+        // who has advantage
+        // is it a deuce
+    }
+
+    public function getPlayerOne()
+    {
+        return $this->playerOne;
+    }
+
+    protected function hasWinner()
+    {
+        # code...
+    }
+
+    protected function hasAdvantage()
+    {
+        # code...
+    }
+
+    protected function isDeuce()
+    {
+        # code...
+    }
+}
