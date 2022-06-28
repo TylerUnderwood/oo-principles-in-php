@@ -1,0 +1,10 @@
+<?php
+
+function register(string $name, int $age)
+{
+    if ($age < 0 || $age > 120) {
+        throw new InvalidArgumentException('That makes no sense');
+    }
+}
+
+register("John Doe", 500);
