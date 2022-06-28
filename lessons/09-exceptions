@@ -40,9 +40,12 @@ class UserDownloadController
 }
 */
 
-class MaximumMembersReachedException extends Exception
+class TeamException extends Exception
 {
-    protected $message = "You may not have more than three members.";
+    public static function fromTooManyMembers()
+    {
+        return new static('You may not have more than three members.');
+    }
 }
 
 class Member
@@ -62,7 +65,7 @@ class Team
     public function add(Member $member)
     {
         if (count($this->members) === 3) {
-            throw new MaximumMembersReachedException;
+            throw TeamException::fromTooManyMembers();
         }
 
         $this->members[] = $member;
@@ -83,7 +86,7 @@ class TeamMembersController
         foreach ($members as &$member) {
             try {
                 $team->add(new Member($member));
-            } catch (MaximumMembersReachedException $exception) {
+            } catch (TeamException $exception) {
                 // throw new \Exception("Not able to add new member.");
                 var_dump($exception);
             }
