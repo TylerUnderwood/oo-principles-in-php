@@ -3,7 +3,7 @@
 // Avoids primitive obsession - and readability
 // Helps with consistency
 // Immutable
-
+/*
 class Age
 {
     private $age;
@@ -32,3 +32,27 @@ $age = new Age(35);
 $age->increment();
 
 var_dump($age->get());
+*/
+
+class Coordinates
+{
+    public $x;
+    public $y;
+
+    public function __construct($x, $y)
+    {
+        $this->x = $x;
+        $this->y = $y;
+    }
+}
+
+function pin(Coordinates $coordinates)
+{
+    $coordinates->x;
+    $coordinates->y;
+}
+
+function distance(Coordinates $begin, Coordinates $end)
+{
+
+}
