@@ -1,0 +1,8 @@
+<?php
+
+function add($one, $two)
+{
+    return $one + $two;
+}
+
+echo add(2, 2);
