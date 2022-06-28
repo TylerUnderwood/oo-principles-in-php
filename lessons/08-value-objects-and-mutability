@@ -1,10 +1,21 @@
 <?php
 
-function register(string $name, int $age)
+class Age
 {
-    if ($age < 0 || $age > 120) {
-        throw new InvalidArgumentException('That makes no sense');
+    public $age;
+
+    public function __construct($age)
+    {
+        if ($age < 0 || $age > 120) {
+            throw new InvalidArgumentException('That makes no sense');
+        }
+
+        $this->age = $age;
     }
 }
 
-register("John Doe", 500);
+function register(string $name, Age $age)
+{
+}
+
+register("John Doe", new Age(-35));
