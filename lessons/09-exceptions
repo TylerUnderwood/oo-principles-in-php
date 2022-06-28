@@ -1,0 +1,101 @@
+<?php
+
+/*
+function add(float $one, float $two)
+{
+    return $one + $two;
+}
+
+echo add(2, 2);
+*/
+
+/*
+class Video
+{
+
+}
+
+class User
+{
+    public function download(Video $video)
+    {
+        if (! $this->subscribed())
+        {
+            throw new \Exception('You must be subscribed to download videos');
+        }
+    }
+
+    public function subscribed()
+    {
+        return false;
+    }
+}
+
+class UserDownloadController
+{
+    public function show()
+    {
+        (new User)->download(new Video);
+    }
+}
+*/
+
+class TeamException extends Exception
+{
+    public static function fromTooManyMembers()
+    {
+        return new static('You may not have more than three members.');
+    }
+}
+
+class Member
+{
+    public $name;
+
+    public function __construct($name)
+    {
+        $this->name = $name;
+    }
+}
+
+class Team
+{
+    protected $members = [];
+
+    public function add(Member $member)
+    {
+        if (count($this->members) === 3) {
+            throw TeamException::fromTooManyMembers();
+        }
+
+        $this->members[] = $member;
+    }
+
+    public function members()
+    {
+        return $this->members;
+    }
+}
+
+class TeamMembersController
+{
+    public function store(array $members)
+    {
+        $team = new Team; // Has a maximum of three members
+
+        foreach ($members as &$member) {
+            try {
+                $team->add(new Member($member));
+            } catch (TeamException $exception) {
+                // throw new \Exception("Not able to add new member.");
+                var_dump($exception);
+            }
+        }
+
+        var_dump($team->members());
+    }
+}
+
+$teamMembers = ['John Doe','Jane Doe','Frank Doe','Susan Doe'];
+
+(new TeamMembersController())->store($teamMembers);
