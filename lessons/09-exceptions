@@ -1,8 +1,33 @@
 <?php
 
-function add($one, $two)
+/*
+function add(float $one, float $two)
 {
     return $one + $two;
 }
 
 echo add(2, 2);
+*/
+
+class Video
+{
+
+}
+
+class User
+{
+    public function download(Video $video)
+    {
+        if (! $this->subscribed())
+        {
+            throw new \Exception('You must be subscribed to download videos');
+        }
+    }
+
+    public function subscribed()
+    {
+        return false;
+    }
+}
+
+(new User)->download(new Video);
