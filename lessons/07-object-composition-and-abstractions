@@ -1,0 +1,37 @@
+<?php
+
+class Subscription
+{
+    public function create()
+    {
+        # code...
+    }
+
+    public function cancel()
+    {
+        # code...
+    }
+
+    public function invoice()
+    {
+        # code...
+    }
+
+    public function swap($newPlan)
+    {
+        # code...
+    }
+}
+
+class BillableSubscription extends Subscription
+{
+    protected function findStripeCustomer()
+    {
+        # code...
+    }
+
+    protected function findStripeSubscriptionByCustomer()
+    {
+        # code...
+    }
+}
