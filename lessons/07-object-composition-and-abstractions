@@ -2,6 +2,16 @@
 
 class Subscription
 {
+    /**
+     * @var \StripeGateway
+     */
+    protected StripeGateway $gateway;
+
+    public function __construct(StripeGateway $gateway)
+    {
+        $this->gateway = $gateway;
+    }
+
     public function create()
     {
         # code...
@@ -9,7 +19,7 @@ class Subscription
 
     public function cancel()
     {
-        # code...
+        $customer = $this->gateway->findStripeCustomer();
     }
 
     public function invoice()
@@ -23,14 +33,14 @@ class Subscription
     }
 }
 
-class BillableSubscription extends Subscription
+class StripeGateway
 {
-    protected function findStripeCustomer()
+    public function findStripeCustomer()
     {
         # code...
     }
 
-    protected function findStripeSubscriptionByCustomer()
+    public function findStripeSubscriptionByCustomer()
     {
         # code...
     }
